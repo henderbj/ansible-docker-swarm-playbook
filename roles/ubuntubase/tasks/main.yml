@@ -17,10 +17,10 @@
   apt: pkg={{ item }} state=installed
   with_items:
     - 'fail2ban'
-    - 'unattended-upgrades'
     - 'git'
     - 'libpq-dev'
     - 'python-dev'
+    - 'python-pip'
     - 'python-setuptools'
     - 'python-virtualenv'
   become: yes
