@@ -1,3 +1,10 @@
+- hosts:
+   - manager
+   - replica
+   - node
+  roles:
+   - ubuntubase
+
 - hosts: 
   - all
   vars:
@@ -10,7 +17,6 @@
       tags:
         - swarm
   roles:
-    - ubuntubase
     - docker
     - name: consul
       tags: 
