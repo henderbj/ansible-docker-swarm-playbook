@@ -6,7 +6,9 @@
    - ubuntubase
 
 - hosts: 
-  - all
+   - manager
+   - replica
+   - node
   vars:
     - initial_cluster_size: 3
   pre_tasks:
@@ -14,6 +16,9 @@
       pip:
         name: "docker-py"
         state: present
+      become: yes
+      become_user: root
+      become_method: sudo
       tags:
         - swarm
   roles:
