@@ -42,6 +42,7 @@
 
 - name: Get the uname
   command: "uname -r"
+  changed_when: false
   register: uname
 
 - debug: var=uname
@@ -85,12 +86,14 @@
 
 - name: Get uname -s
   command: "uname -s"
+  changed_when: false
   register: unames
   tags: 
     - with_compose
 
 - name: Get uname -m
   command: "uname -m"
+  changed_when: false
   register: unamem
   tags: 
     - with_compose
