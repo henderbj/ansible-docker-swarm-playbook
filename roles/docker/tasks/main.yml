@@ -76,9 +76,9 @@
     name: docker 
     state: present
 
-- name: Add devops to docker group
+- name: Add {{ansible_user}} to docker group
   user: 
-    name: devops
+    name: "{{ansible_user}}"
     group: docker
   become: yes
   become_user: root 
