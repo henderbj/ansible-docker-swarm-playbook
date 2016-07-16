@@ -1,14 +1,12 @@
 - hosts:
-   - manager
-   - replica
-   - node
+   - managers
+   - nodes
   roles:
    - ubuntubase
 
 - hosts: 
-   - manager
-   - replica
-   - node
+   - managers
+   - nodes
   vars:
     - initial_cluster_size: 3
   pre_tasks:
@@ -28,8 +26,7 @@
         - consul
 
 - hosts:
-   - manager
-   - replica
+   - managers
   tasks:
 
     #$ docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise 172.30.0.161:4000 consul://172.30.0.161:8500
@@ -60,7 +57,7 @@
 #        - swarm
 
 - hosts:
-   - node
+   - nodes
   tasks:
     #$ docker run -d swarm join --advertise=172.30.0.69:2375 consul://172.30.0.161:8500        
     - name: Run docker nodes
