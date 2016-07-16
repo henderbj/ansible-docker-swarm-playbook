@@ -67,13 +67,7 @@
       docker:
         name: swarm
         image: swarm
-        command: "join --advertise {{private_ip}}:4000 consul://{{private_ip}}:8500"
+        command: "join --advertise {{private_ip}}:{{engine_port}} consul://{{private_ip}}:8500"
         state: started
       tags:
         - swarm
-
-
-
-
-
-
