@@ -71,6 +71,18 @@
   become_user: root 
   become_method: sudo
 
+- name: Configure Docker Engine to listen on tcp and socket
+  lineinfile:
+    dest: /etc/default/docker
+    regexp: "^DOCKER_OPTS=.*"
+    line: "DOCKER_OPTS=\"-H tcp://{{private_ip}}:{{engine_port}} -H unix:///var/run/docker.sock\""
+    backup: yes
+    insertafter: "^#DOCKER_OPTS=.*"
+  notify: "restart docker"
+  become: yes
+  become_user: root
+  become_method: sudo
+
 - name: Add docker group
   group: 
     name: docker 
